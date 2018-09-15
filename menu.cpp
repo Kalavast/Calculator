@@ -53,7 +53,7 @@ break;
 } // This is testing area only before applied the final one....
 //Also, function works very well and just need to add call functions from other group member.
 .
-// please note: i may add more caes if there is more call functions..... :)
+// please note: i may add more case if there is more call functions..... :)
 
 }while(number != 0); // assume user select zero, loop will stop and exit. 
 
