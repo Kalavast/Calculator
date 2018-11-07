@@ -2,38 +2,345 @@
 using namespace std; 
 
 /*
-Author Aziz Aldawk 
+Author:
 This is for our project and my mission is doing menu function.
-shll only funciton on main to make it easy.....
-Note: maybe i need to gethering all program on once. 
-Note: This program need to be done on the weekend. 
+should only funciton on main to make it easy.....
+note: it may change something on commend.....  
 */
-void Menu(); 
+
+
+struct Index
+{
+        int data;
+        Index* linkf;
+        Index* linkb;
+};
+Index *head = NULL;
+Index *tail = new Index;
+Index *current = NULL;
+Index *save = NULL;
+void sorting();
+void FirstVarStat();
+
+void Menu();
+void CreatList();
+ 
 int main(){
 
-//shll only function here. 
 
-Menu(); 
-// Great, my function is working and Shll i start so. :) 
-// make sure is looping until select (0); 
-
+Menu();
+//call function for menu...
 }
- 
+
+/*================= Menu Function ===============
+ This function supposed to be chose what the user need 
+ and  which the function.  
+ For example, if user want adding, he/she 
+ must chose number 1 to apply adding functing
+ and can use it. 
+if user want to exit, he/she may select zero
+to stop the loop and exit. 
+==============================================*/
+
 void Menu(){
 
 int number; 
-
-
-
+do{
+cout<<"If you want to make creat list press  <1>"<<endl
+    <<"if you want  <2>"<<endl
+    <<"if you want  <3>"<<endl
+    <<" Exit? Enter number 0 "<<endl; 
+// please ignore output, i will fix it when i get the functions from you.
+cin>>number; 
 switch(number)
 {
 case 1:
-
+CreatList();
+// function call right here
 break;
 
+case 2:
+// function call right here
+break;
+
+case 3: 
+// function call  right here
+break;
+} // This is testing area only before applied the final one....
+//Also, function works very well and just need to add call functions from other group member.
+
+// please note: i may add more case if there is more call functions..... :)
+
+}while(number != 0); // assume user select zero, loop will stop and exit. 
 
 }
 
 
+void CreatList(){
+
+    /////////////// this should be in  create list
+    int num = 0;
+    cout << "Enter NUmbers or press 0 to ";
+    do {
+            cout << "Enter Number" << endl;
+            cin >> num;
+            if (num > 0)
+            {
+
+                    if (head == NULL) {
+                            head = new Index;
+                            head->linkf = tail;
+                            tail->linkb = head;
+                            tail->data = num;
+                    }
+                    else {
+                            tail->linkf = new Index;
+                            tail->linkf->linkb = tail;
+                            tail = tail->linkf;
+                            tail->data = num;
+                    }
+            }
+    } while (num != 0);
+    tail->linkf = NULL;
+
+
+    current = head->linkf;
+    while (current->linkf != NULL)
+    {
+            current = current->linkf;
+            save = head->linkf;
+            sorting();
+
+    }
+
+
+    ////////////this should be in the option First Variable Statistics in the menu
+    FirstVarStat();
+
+    current = head;
+    do {
+            current = current->linkf;
+            cout << current->data << endl;
+    } while (current->linkf != NULL);
+
+
 
 }
+
+// this functions does a _________ Sort in order to sort the function
+void sorting()
+{
+
+        while (save->data != current->data || save->linkb->data != current->linkb->data){
+
+            if (current->data < save->data && save->linkf->data == current->data)
+            {
+                    save->linkf = current->linkf;// current->link ?= NULL
+                    current->linkf = save;
+                    current->linkb = save->linkb;
+                        current->linkb->linkf = current;
+                    save->linkb = current;
+                        if (save->linkf == NULL)
+                        {
+                                return;
+                        }
+                        save->linkf->linkb = save;
+                        current = save;
+                        return;
+         }
+
+            if (current->data < save->data && current->linkf != NULL)
+            {
+                    current->linkb->linkf = current->linkf;
+                    current->linkf->linkb = current->linkb;
+
+                    save->linkb->linkf = current;
+                    current->linkb = save->linkb;
+
+                    save->linkb = current;
+                        current = save; //current = current->linf
+                    save->linkb->linkf = save;
+                        return;
+            }
+
+            if (current->data < save->data && current->linkf == NULL)
+            {
+                    tail = current->linkb;
+                    current->linkb->linkf = NULL;
+                    current->linkf = save;
+                    save->linkb->linkf = current;
+                    current->linkb = save->linkb;
+                    save->linkb = save->linkb->linkf;
+                        return;
+            }
+                save = save->linkf;
+        }
+
+}
+// This function finds mean,median,mode and range and gives the answer to the user.
+void FirstVarStat()
+{
+        int num = 0;
+        double num1 = 0;
+        int num2 = 0;
+        //int num3 = 0;
+        int set[30] = { 0 };
+        int tally[30] = { 0 };
+        bool mode = true;
+        current = head;
+        do {
+                current = current->linkf;
+                num = num + 1;
+                num1 = current->data + num1;
+        } while (current->linkf != NULL);
+        num1 = num1 / num;
+        cout << "Mean  " << num1 << endl;
+
+        //finding median
+        if (num % 2 == 0) // if even amout of numbers
+        {
+                num = num / 2;
+                save = head;
+                for (int i = 0; i != num; i++) {
+                        save = save->linkf;
+                }
+                num2 = save->data;
+                num1 = save->linkf->data;
+                cout << "Median  " << (num2 + num1) / 2 << endl;
+
+                if (num % 2 == 0)
+                {
+                        num = (num / 2);
+                        current = save;
+                        for (int i = 0; i != num; ++i) {
+                                current = current->linkb;
+                        }
+                        num1 = current->data;
+                        num2 = current->linkb->data;
+                        cout << "Q1  " << (num2 + num1) / 2 << endl;
+
+
+                        current = save->linkf;
+                        for (int i = 0; i != num; ++i) {
+                                current = current->linkf;
+                        }
+                        num1 = current->data;
+                        num2 = current->linkb->data;
+                        cout << "Q2  " << (num2 + num1) / 2 << endl;
+                }
+                else
+                {
+                        num = (num / 2);
+                        current = save;
+                        for (int i = 0; i != num; ++i) {
+                                current = current->linkb;
+                        }
+                        num1 = current->data;
+                        cout << "Q1  " << num1 << endl;
+
+                        current = save->linkf;
+                        for (int i = 0; i != num; ++i) {
+                                current = current->linkf;
+                        }
+                        num1 = current->data;
+                        cout << "Q2  " << num1 << endl;
+                }
+        }
+        // median
+        else// if (num % 2 > 1)
+        {
+                num = num / 2;
+                save = head->linkf;
+                for (int i = 0; i != num; i++) {
+                        save = save->linkf;
+                }
+                num2 = save->data;
+                cout << "Median  " << num2 << endl;
+
+
+                if (num % 2 == 0)
+                {
+                        num = (num / 2);
+                        current = save;
+                        for (int i = 0; i != num; ++i) {
+                                current = current->linkb;
+                        }
+                        num1 = current->data;
+                        num2 = current->linkb->data;
+                        cout << "Q1  " << (num2 + num1) / 2 << endl;
+
+
+                        current = save->linkf;
+                        for (int i = 0; i != num; ++i) {
+                                current = current->linkf;
+                        }
+                        num1 = current->data;
+                        num2 = current->linkb->data;
+                        cout << "Q2  " << (num2 + num1) / 2 << endl;
+                }
+                else
+                {
+                        num = (num / 2);
+                        current = save;
+                        for (int i = 0; i != num; ++i) {
+                                current = current->linkb;
+                        }
+                        num1 = current->data;
+                        cout << "Q1  " << num1 << endl;
+
+                        current = save->linkf;
+                        for (int i = 0; i != num; ++i) {
+                                current = current->linkf;
+                        }
+                        num1 = current->data;
+                        cout << "Q2  " << num1 << endl;
+                }
+        }
+
+
+
+
+        current = head->linkf;
+        num = 0;
+        num1 = 0;
+        set[num] = current->data;
+        tally[num] = 1;
+        do {
+                current = current->linkf;
+                if (set[num] != current->data) // 1,1,2,2,3,3,4,4
+                {
+                    num = num + 1;
+                        set[num] = current->data;
+                }
+                tally[num] = tally[num] + 1;
+        } while (current->linkf != NULL);
+        num = 1;
+        //num1 = tally[num];
+        do {
+                if (tally[num2] == tally[num]) {
+                        mode = false;
+                }
+                if (tally[num2] < tally[num]) {
+                        num2 = num;
+                        mode = true;
+                }
+                num = num + 1;
+        } while (tally[num] != 0);
+
+        if (mode == true)
+        {
+                cout << "Mode  " << set[num2] << endl;
+                cout << "num  " << num << endl;
+        }
+        else
+        {
+                cout << "Mode does not exist" << endl;
+        }
+
+
+
+        // FInd range
+        num1 = tail->data - head->linkf->data;
+        cout << "Range  " << num1 << endl;
+}
+
