@@ -2,7 +2,12 @@
 using namespace std; 
 
 /*
-Author:
+Authors:
+Aziz Aldawk
+Ross Youngs
+Joshua Carter
+Matthew Janosik
+
 This is for our project and my mission is doing menu function.
 should only funciton on main to make it easy.....
 note: it may change something on commend.....  
@@ -21,10 +26,16 @@ Index *current = NULL;
 Index *save = NULL;
 void sorting();
 void FirstVarStat();
+float Addition(float num1,float num2);
+float Multiplication(float num1,float num2);
+float Subtraction(float num1,float num2);
 
 void Menu();
 void CreatList();
- 
+void Addition1();
+void Multiplication1();
+void Subtraction1();
+
 int main(){
 
 
@@ -47,8 +58,9 @@ void Menu(){
 int number; 
 do{
 cout<<"If you want to make creat list press  <1>"<<endl
-    <<"if you want  <2>"<<endl
-    <<"if you want  <3>"<<endl
+    <<"if you want to Addition press <2>"<<endl
+    <<"if you want to multiplication press  <3>"<<endl
+    <<"if you want to Sub press  <4>"<<endl
     <<" Exit? Enter number 0 "<<endl; 
 // please ignore output, i will fix it when i get the functions from you.
 cin>>number; 
@@ -58,13 +70,17 @@ case 1:
 CreatList();
 // function call right here
 break;
-
 case 2:
+Addition1();
 // function call right here
 break;
 
 case 3: 
+Multiplication1();
 // function call  right here
+break;
+case 4:
+Subtraction1();
 break;
 } // This is testing area only before applied the final one....
 //Also, function works very well and just need to add call functions from other group member.
@@ -344,3 +360,129 @@ void FirstVarStat()
         cout << "Range  " << num1 << endl;
 }
 
+
+void Addition1(){
+
+float num1,num2,result;
+//set numbers to 0
+num1=num2=0;
+//inputs numbers
+cout << "Please enter a Number: ";
+cin >> num1;
+cout << "Please enter a second Number: ";
+cin >> num2;
+
+//calls addition function
+result=Addition(num1,num2);
+//use this function if you want the numbers to be input after the function is called.
+//result=Addition();
+
+
+cout << result<<endl;
+
+}
+
+float Addition(float num1,float num2)
+{
+    int sum;
+	sum=num1+num2;
+	return sum;
+}
+/*use this function if you want the numbers to be input after the function is called.
+float Addition()
+{
+	float num1,num2,sum;
+	//initialize all numbers
+	num1=num2=sum=0;
+	cout << "Please enter a Number: ";
+	cin >> num1;
+	cout << "Please enter a second Number: ";
+	cin >> num2;
+	sum=num1+num2;
+	return sum;
+}*/
+
+void Multiplication1(){
+
+float num1,num2,result;
+//set numbers to 0
+num1=num2=0;
+//inputs numbers
+cout << "Please enter a Number: ";
+cin >> num1;
+cout << "Please enter a second Number: ";
+cin >> num2;
+
+//calls Multiplication function
+result=Multiplication(num1,num2);
+//use this function if you want the numbers to be input after the function is called.
+//result=Multiplication();
+
+
+cout << result<<endl;
+
+}
+
+
+float Multiplication(float num1,float num2)
+{
+    int sum;
+	//multiplies the numbers and returns sum.
+	sum=num1*num2;
+	return sum;
+}
+/*use this function if you want the numbers to be input after the function is called.
+float Multiplication()
+{
+	float num1,num2,sum;
+	//initialize all numbers
+	num1=num2=sum=0;
+	cout << "Please enter a Number: ";
+	cin >> num1;
+	cout << "Please enter a second Number: ";
+	cin >> num2;
+	sum=num1+num2;
+	return sum;
+}*/
+
+void Subtraction1(){
+float num1,num2,result;
+//set numbers to 0
+num1=num2=0;
+//inputs numbers
+cout << "Please enter a Number: ";
+cin >> num1;
+cout << "Please enter a second Number: ";
+cin >> num2;
+
+//calls Subtraction function
+result=Subtraction(num1,num2);
+//use this function if you want the numbers to be input after the function is called.
+//result=Subtraction();
+
+
+cout << result<<endl;
+
+}
+
+
+float Subtraction(float num1,float num2)
+{
+    int sum;
+	//does subtraction arithmetic, and gives sum.
+	sum=num1-num2;
+	return sum;
+}
+/*use this function if you want the numbers to be input after the function is called.
+float Subtraction()
+{
+	float num1,num2,sum;
+	//initialize all numbers
+	num1=num2=sum=0;
+	cout << "Please enter a Number: ";
+	cin >> num1;
+	cout << "Please enter a second Number: ";
+	cin >> num2;
+	sum=num1-num2;
+	return sum;
+}*/
