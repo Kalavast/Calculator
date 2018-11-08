@@ -110,10 +110,8 @@ void Menu(){
 		default:
 			cout << "Error" << endl;
 			exit(0);
-		} // This is testing area only before applied the final one....
-		//Also, function works very well and just need to add call functions from other group member.
-
-		// please note: i may add more case if there is more call functions..... :)
+		}// menu funciton has been completed and worked correctly. 
+		// default to a void of any bugs or error. 
 
 	} while (number != 0); // assume user select zero, loop will stop and exit. 
 
