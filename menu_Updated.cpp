@@ -521,19 +521,13 @@ float result;
 result=0;
 
 //calls Multiplication function
-result=Multiplication2();
+result=Division();
 
 
 cout << result<<endl;
 }
 
-//Joshua's Functions 
-void squareroot1(){
-
-	cout << squareroot() << endl;
-}
-
-float Multiplication2(){
+float Division(){
 	float num1,num2,Quoitent;
 	//initialize all numbers
 	num1=num2=Quoitent=0;
@@ -543,6 +537,12 @@ float Multiplication2(){
 	cin >> num2;
         Quoitent=num1/num2;
 	return Quoitent;
+}
+
+//Joshua's Functions 
+void squareroot1(){
+
+	cout << squareroot() << endl;
 }
 
 double squareroot(){
