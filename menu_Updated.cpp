@@ -8,7 +8,6 @@ Authors: Aziz Aldawk, Ross Youngs, Joshua Carter, Matthew Janosik.
 Purpose: 
 Date:
 Class:INFO-I450 
-
 */
 
 
@@ -27,6 +26,7 @@ void FirstVarStat();
 float Addition(float num1, float num2);
 float Multiplication(float num1, float num2);
 float Subtraction(float num1, float num2); 
+float Multiplication2();
 double squareroot();
 double squared();
 int power();
@@ -37,6 +37,7 @@ void CreatList();// Matt's functions.
 void Addition1();// Ross's function.
 void Multiplication1();// Ross's function
 void Subtraction1();// Ross's function 
+void Divison1();
 void squareroot1();// Joshua's function
 void squared1();// Joshua's function
 void power1();// Joshua's functions
@@ -70,10 +71,11 @@ void Menu(){
 			<< "Addition press <2>" << endl
 			<< "Multiplication press  <3>" << endl
 			<< "Sub press  <4>" << endl
-			<< "Squareroot press  <5>" << endl
-			<< "Squared press  <6>" << endl
-			<< "Power press  <7>" << endl
-			<< "logarithm press  <8>" << endl
+			<< "Divison press  <5>" << endl
+			<< "Squareroot press  <6>" << endl
+			<< "Squared press  <7>" << endl
+			<< "Power press  <8>" << endl
+			<< "logarithm press  <9>" << endl
 			<< "Quite press <0> " << endl;
 		// The outputs ask user what she/he wants on menus options..
 		cin >> number;
@@ -93,15 +95,18 @@ void Menu(){
 			Subtraction1();
 			break;
 		case 5:
+			Divison1();
+			break;
+                case 6:
 			squareroot1();
 			break;
-		case 6:
+		case 7:
 			squared1();
 			break;
-		case 7:
+		case 8:
 			power1();
 			break;
-		case 8:
+		case 9:
 			logarithm1();
 			break;
 		default:
@@ -510,10 +515,34 @@ cin >> num2;
 sum=num1-num2;
 return sum;
 }*/
+
+void Divison1(){
+float result;
+result=0;
+
+//calls Multiplication function
+result=Multiplication2();
+
+
+cout << result<<endl;
+}
+
 //Joshua's Functions 
 void squareroot1(){
 
 	cout << squareroot() << endl;
+}
+
+float Multiplication2(){
+	float num1,num2,Quoitent;
+	//initialize all numbers
+	num1=num2=Quoitent=0;
+	cout << "Please enter a Number: ";
+	cin >> num1;
+	cout << "Please enter a second Number: ";
+	cin >> num2;
+        Quoitent=num1/num2;
+	return Quoitent;
 }
 
 double squareroot(){
