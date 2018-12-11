@@ -1,0 +1,9 @@
+//cin >> num;
+		while (!(cin >> num)) {
+			cout << "Bad value!" << endl;
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cout << "Enter a number please." << endl;
+		}
+    
+// Do not have cin >> num this is done in the while statment
