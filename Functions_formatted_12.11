@@ -1,0 +1,250 @@
+#include<iostream>
+#include<math.h>
+#include<cstdlib>
+#include<stdlib.h>
+#include<limits>
+using namespace std;
+
+/*
+Authors: Aziz Aldawk, Ross Youngs, Joshua Carter, Matthew Janosik.
+Purpose:
+Date:
+Class:INFO-I450
+*/
+
+
+struct Index
+{
+  int data;
+  Index* linkf;
+  Index* linkb;
+};
+Index *head = NULL;
+Index *tail = new Index;
+Index *current = NULL;
+Index *save = NULL;
+
+void sorting();
+void FirstVarStat();
+float Addition(float num1, float num2);
+float Multiplication(float num1, float num2);
+float Subtraction(float num1, float num2);
+float Division();
+double Squareroot();
+double Squared();
+int Power();
+double Logarithm();
+
+void Menu(); // Aziz's functions
+//void CreatList();// Matt's functions.
+//void AdditionAdapter();// Ross's function.
+//void Multiplication1();// Ross's function
+//void Subtraction1();// Ross's function
+//void Divison1();
+void Squareroot1();// Joshua's function
+void Squared1();// Joshua's function
+void Power1();// Joshua's functions
+void Logarithm1();// Joshua's function.
+/*
+The main where program or complie start and run
+the functions.
+usually has nothing on it, only the menu.
+*/
+int main(){
+  Menu();
+  //call function for menu...
+  system("clear");
+}
+
+/*================= Menu Function ===============
+This function supposed to be chose what the user need
+and  which the function.
+For example, if user want adding, he/she
+must chose number 1 to apply adding functing
+and can use it.
+if user want to exit, he/she may select zero
+to stop the loop and exit.
+==============================================*/
+//Aziz's functions
+void Menu(){
+
+  int number;
+  do{
+    cout << "Creat list press <1>" << endl
+	 << "Addition press <2>" << endl
+	 << "Multiplication press  <3>" << endl
+	 << "Sub press  <4>" << endl
+	 << "Divison press  <5>" << endl
+	 << "Squareroot press  <6>" << endl
+	 << "Squared press  <7>" << endl
+	 << "Power press  <8>" << endl
+	 << "logarithm press  <9>" << endl
+	 << "Quite press <0> " << endl;
+    // The outputs ask user what she/he wants on menus options..
+    cin >> number;
+    system("clear");
+    switch (number)
+      {
+      case 1:
+	//system("clear");
+	//CreatList();
+	break;
+      case 2:
+	//AdditionAdapter();
+	break;
+
+      case 3:
+	//Multiplication1();
+	break;
+      case 4:
+	//Subtraction1();
+	break;
+      case 5:
+	//Divison1();
+	break;
+      case 6:
+	Squareroot1();
+	break;
+      case 7:
+	Squared1();
+	break;
+      case 8:
+	Power1();
+	break;
+      case 9:
+	Logarithm1();
+	break;
+      default:
+	cout << "Quitting from program" << endl;
+        exit(0); // Default, if user enter other number is not on the menu.
+      }// menu funciton has been completed and worked correctly.
+    // default to a void of any bugs or error.
+
+  } while (number != 0); // assume user select zero, loop will stop and exit.
+
+}
+
+
+//Joshua's Functions
+void Squareroot1(){
+
+  Squareroot();
+}
+
+double Squareroot(){
+
+  double root;
+  double r;
+  cout << "Enter a number to find squareroot of ";
+  while (!(cin >> r))
+    {
+      cout << "Bad value!" << endl;
+      cin.clear();
+      cin.ignore(numeric_limits<streamsize>::max(), '\n');
+      cout << "Enter a number please." << endl;
+    }
+  root = pow(r, 0.5);
+  cout << endl;
+  cout << "" << "√" << r << " = " << root << endl;
+  cout << endl;
+}
+
+void Squared1(){
+
+  Squared();
+}
+
+double Squared(){
+
+  double square;
+  double s;
+  cout << "Enter a number to be squared ";
+  while (!(cin >> s))
+    {
+      cout << "Bad value!" << endl;
+      cin.clear();
+      cin.ignore(numeric_limits<streamsize>::max(), '\n');
+      cout << "Enter a number please." << endl;
+    }
+  square = s*s;
+  cout << endl;
+  cout << "" << s << "²" << " = " << square << endl;
+  cout << endl;
+}
+
+void Power1(){
+
+  Power();
+}
+
+int Power(){
+
+  int num = 1;
+  int e;
+  int b;
+  cout << "Enter the base number ";
+  while (!(cin >> b))
+    {
+      cout << "Bad value!" << endl;
+      cin.clear();
+      cin.ignore(numeric_limits<streamsize>::max(), '\n');
+      cout << "Enter a number please." << endl;
+    }
+  cout << "Enter the power to be raised to ";
+  while (!(cin >> e))
+    {
+      cout << "Bad value!" << endl;
+      cin.clear();
+      cin.ignore(numeric_limits<streamsize>::max(), '\n');
+      cout << "Enter a number please." << endl;
+    }
+  for (int i = 0; i < e; i++)
+    {
+      num = num * b;
+    }
+  cout << endl;
+  cout << "" << b << " raised to " << e << " power "<< " = " << num << endl;
+  cout << endl;
+}
+
+void Logarithm1(){
+
+  Logarithm();
+}
+
+
+double Logarithm()
+{
+  double logr;
+  int l;
+  int c;
+  cout << "Choose a log base of 2 or 10: ";
+  while (!(cin >> c && c == 2 || c == 10))
+    {
+      cout << "Bad value!" << endl;
+      cin.clear();
+      cin.ignore(numeric_limits<streamsize>::max(), '\n');
+      cout << "Enter a number please." << endl;
+    }
+  cout << "Enter a number ";
+  while (!(cin >> l))
+    {
+      cout << "Bad value!" << endl;
+      cin.clear();
+      cin.ignore(numeric_limits<streamsize>::max(), '\n');
+      cout << "Enter a number please." << endl;
+    }
+  switch (c)
+    {
+    case 10: logr = log10(l);
+      cout << endl;
+      cout << "" << "Log base " << c << " of " << l << " = " << logr << endl;
+      cout << endl;
+      break;
+    case 2: logr = log2(l);
+      cout << endl;
+      cout << "" << "Log base " << c << " of " << l << " = " << logr << endl;
+      cout << endl;
+      break;
+    }
+}
